@@ -1,0 +1,148 @@
+:root {
+  --folder-color: #ffffff;
+  --folder-back-color: #ffffff;
+}
+
+.folder {
+  transition: all 0.2s ease-in;
+  cursor: pointer;
+  position: relative;
+}
+
+/* Hover States (Peak Out) */
+.folder:not(.folder--click):hover .paper:nth-child(1) {
+  transform: translate(-50%, 0px);
+}
+
+.folder:not(.folder--click):hover .paper:nth-child(2) {
+  transform: translate(-50%, -30px);
+}
+
+.folder:not(.folder--click):hover .paper:nth-child(3) {
+  transform: translate(-50%, -60px);
+}
+
+.folder:not(.folder--click):hover .folder__front {
+  transform: skew(10deg) scaleY(0.7);
+}
+
+.folder:not(.folder--click):hover .right {
+  transform: skew(-10deg) scaleY(0.7);
+}
+
+/* Open States (Large Stepped Cascade) */
+.folder.open .paper:nth-child(1) {
+  transform: translate(calc(-50% + var(--magnet-x, 0px)), calc(-40px + var(--magnet-y, 0px)));
+}
+
+.folder.open .paper:nth-child(1):hover {
+  transform: translate(calc(-50% + var(--magnet-x, 0px)), calc(-40px + var(--magnet-y, 0px))) scale(1.01);
+}
+
+.folder.open .paper:nth-child(2) {
+  transform: translate(calc(-50% + var(--magnet-x, 0px)), calc(-100px + var(--magnet-y, 0px)));
+}
+
+.folder.open .paper:nth-child(2):hover {
+  transform: translate(calc(-50% + var(--magnet-x, 0px)), calc(-100px + var(--magnet-y, 0px))) scale(1.01);
+}
+
+.folder.open .paper:nth-child(3) {
+  transform: translate(calc(-50% + var(--magnet-x, 0px)), calc(-160px + var(--magnet-y, 0px)));
+}
+
+.folder.open .paper:nth-child(3):hover {
+  transform: translate(calc(-50% + var(--magnet-x, 0px)), calc(-160px + var(--magnet-y, 0px))) scale(1.01);
+}
+
+/* Slide the front cover out of the way when open to show the complete stack */
+.folder.open .folder__front {
+  transform: translateY(110%) scaleY(0.5);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.folder.open .right {
+  transform: translateY(110%) scaleY(0.5);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.folder__back {
+  position: relative;
+  width: 600px;
+  height: 300px;
+  background: var(--folder-back-color);
+  border: 1px solid #000000;
+  border-radius: 0px;
+}
+
+.folder__back::after {
+  position: absolute;
+  z-index: 0;
+  bottom: 100%;
+  left: -1px;
+  content: '';
+  width: 170px;
+  height: 45px;
+  background: var(--folder-back-color);
+  border-top: 1px solid #000000;
+  border-left: 1px solid #000000;
+  border-right: 1px solid #000000;
+  border-radius: 0px;
+}
+
+.paper {
+  position: absolute;
+  bottom: 10%;
+  left: 50%;
+  transform: translate(-50%, 50px);
+  width: 95%;
+  height: 50%; /* Large native card height */
+  border: 1px solid #000000;
+  border-radius: 0px;
+  transition: transform 0.25s cubic-bezier(0.25, 1, 0.5, 1), background 0.3s ease-in-out, opacity 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: inherit;
+  user-select: none;
+}
+
+/* Reverse z-index so Paper 1 is in front, Paper 3 is in back */
+.paper-1 {
+  z-index: 5;
+  background: #ffffff !important;
+  color: #000000;
+}
+
+.paper-2 {
+  z-index: 4;
+  background: #000000 !important;
+  color: #ffffff;
+}
+
+.paper-3 {
+  z-index: 3;
+  background: #ffffff !important;
+  color: #000000;
+}
+
+.folder__front {
+  position: absolute;
+  z-index: 10;
+  width: 600px;
+  height: 300px;
+  left: -1px;
+  bottom: -1px;
+  background: var(--folder-color);
+  border: 1px solid #000000;
+  border-radius: 0px;
+  transform-origin: bottom;
+  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.folder__front.right {
+  left: 0px;
+  border-left: none;
+}
