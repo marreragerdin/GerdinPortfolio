@@ -16,12 +16,16 @@ body {
 .portfolio-container {
   display: flex;
   justify-content: center;
-  align-items: flex-end; /* Keep deck positioned closer to the ground */
+  align-items: flex-end;
+  /* Keep deck positioned closer to the ground */
   min-height: 100vh;
-  width: 1000px; /* Constrain container to new 1000px width */
-  margin: 0 auto; /* Center the borders on the screen */
+  width: 1000px;
+  /* Constrain container to new 1000px width */
+  margin: 0 auto;
+  /* Center the borders on the screen */
   box-sizing: border-box;
-  padding-bottom: 4vh; /* Changed from 16vh to 4vh to push the tabs and deck further down */
+  padding-bottom: 4vh;
+  /* Changed from 16vh to 4vh to push the tabs and deck further down */
   background-color: #ffffff;
   /* Left and right outlines stretch from absolute top to bottom of screen */
   border-left: 1px solid #000000;
@@ -34,7 +38,7 @@ body {
   width: 100%;
   height: 650px;
   background: transparent;
-  overflow: hidden;
+  overflow: visible;
   box-sizing: border-box;
 }
 
@@ -43,7 +47,8 @@ body {
   position: absolute;
   left: 0;
   width: 100%;
-  height: calc(100% - 45px); /* Leave space for the tab at the top */
+  height: calc(100% - 45px);
+  /* Leave space for the tab at the top */
   transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
   box-sizing: border-box;
   background-color: #ffffff !important;
@@ -71,7 +76,8 @@ body {
   border-radius: 12px 12px 0 0;
   font-family: 'Montserrat', sans-serif;
   font-weight: 700;
-  font-size: 15px; /* Increased from 13px */
+  font-size: 15px;
+  /* Increased from 13px */
   letter-spacing: 2px;
   text-transform: uppercase;
   transition: all 0.3s ease;
@@ -93,20 +99,41 @@ body {
 
 /* Custom Scrollbar for Card Body */
 .card-body::-webkit-scrollbar {
-  width: 6px;
+  width: 8px;
 }
+
 .card-body::-webkit-scrollbar-track {
-  background: rgba(0, 0, 0, 0.05);
+  background: #ffffff;
+  border-left: 1px solid #000000;
 }
+
 .card-body::-webkit-scrollbar-thumb {
-  background: rgba(0, 0, 0, 0.1);
-  border-radius: 3px;
+  background: transparent;
+}
+
+.card-body.active-card::-webkit-scrollbar-thumb {
+  background: #000000;
+}
+
+/* Custom Scrollbar for Intro Page — exact match of card-body style */
+.portfolio-container.intro-page-body::-webkit-scrollbar {
+  width: 8px;
+}
+
+.portfolio-container.intro-page-body::-webkit-scrollbar-track {
+  background: #ffffff;
+  border-left: 1px solid #000000;
+}
+
+.portfolio-container.intro-page-body::-webkit-scrollbar-thumb {
+  background: #000000;
 }
 
 /* Big Serif Typographic Header */
 .editorial-title {
   font-family: 'Montserrat', sans-serif;
-  font-size: 84px; /* Increased from 80px */
+  font-size: 84px;
+  /* Increased from 80px */
   line-height: 0.9;
   text-align: center;
   text-transform: uppercase;
@@ -118,7 +145,8 @@ body {
 
 .editorial-subtitle {
   font-family: 'Montserrat', sans-serif;
-  font-size: 26px; /* Increased from 24px */
+  font-size: 26px;
+  /* Increased from 24px */
   text-align: center;
   font-weight: 500;
   text-transform: uppercase;
@@ -164,13 +192,15 @@ body {
 .info-card h3 {
   font-family: 'Montserrat', sans-serif;
   font-weight: 700;
-  font-size: 20px; /* Increased from 18px */
+  font-size: 20px;
+  /* Increased from 18px */
   margin-top: 0;
   margin-bottom: 12px;
 }
 
 .info-card p {
-  font-size: 16px; /* Increased from 14px */
+  font-size: 16px;
+  /* Increased from 14px */
   line-height: 1.6;
   opacity: 0.85;
   margin: 0;
@@ -190,12 +220,14 @@ body {
 .project-title {
   font-family: 'Montserrat', sans-serif;
   font-weight: 700;
-  font-size: 20px; /* Increased from 18px */
+  font-size: 20px;
+  /* Increased from 18px */
 }
 
 .project-tag {
   font-family: 'monospace';
-  font-size: 13px; /* Increased from 12px */
+  font-size: 13px;
+  /* Increased from 12px */
   opacity: 0.6;
 }
 
@@ -216,10 +248,92 @@ body {
   margin-bottom: 14px;
   transition: all 0.3s ease;
   border: 1px solid #000000;
-  font-size: 18px; /* Increased */
+  font-size: 18px;
+  /* Increased */
 }
+
 .contact-button:hover {
   background: #000000;
   color: #ffffff;
   transform: translateX(6px);
+}
+
+/* Comic Book Style Tooltip */
+.comic-tooltip {
+  position: absolute;
+  bottom: calc(100% + 15px);
+  left: 20px;
+  width: 680px;
+  background: #ffffff;
+  border: 1px solid #000000;
+  padding: 20px;
+  z-index: 100;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  pointer-events: none;
+  animation: comicPopup 0.15s ease-out forwards;
+  transform-origin: bottom left;
+  text-align: left;
+}
+
+/* Speech bubble tail */
+.comic-tooltip::after {
+  content: '';
+  position: absolute;
+  bottom: -15px;
+  left: 30px;
+  width: 0;
+  height: 0;
+  border-width: 15px 10px 0;
+  border-style: solid;
+  border-color: #000000 transparent transparent;
+  display: block;
+}
+
+.comic-tooltip::before {
+  content: '';
+  position: absolute;
+  bottom: -13px;
+  left: 31px;
+  width: 0;
+  height: 0;
+  border-width: 13.5px 9px 0;
+  border-style: solid;
+  border-color: #ffffff transparent transparent;
+  display: block;
+  z-index: 1;
+}
+
+/* Adjustments for the first item to pop downwards instead of upwards if there is no top space */
+.comic-tooltip.pop-down {
+  bottom: auto;
+  top: calc(100% + 15px);
+  transform-origin: top left;
+}
+
+.comic-tooltip.pop-down::after {
+  bottom: auto;
+  top: -15px;
+  border-width: 0 10px 15px;
+  border-color: transparent transparent #000000;
+}
+
+.comic-tooltip.pop-down::before {
+  bottom: auto;
+  top: -13px;
+  border-width: 0 9px 13.5px;
+  border-color: transparent transparent #ffffff;
+}
+
+@keyframes comicPopup {
+  from {
+    opacity: 0;
+    transform: scale(0.96) translateY(5px);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
 }

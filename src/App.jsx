@@ -5,11 +5,36 @@ import ProjectsPage from './components/ProjectsPage'
 import IntroPage from './components/IntroPage'
 import './App.css'
 
+const projects = [
+  {
+    id: 1,
+    title: "1. EsCee Hub",
+    description: "A web-based management system built to organize the administration of students' duty assignments and hours verification.",
+    tag: "NPM PACKAGE",
+    image: "/escee_hub_preview.png"
+  },
+  {
+    id: 2,
+    title: "2. EduTrack",
+    description: "A web application designed to simplify the monitoring, recording, and analysis of student academic performance.",
+    tag: "MOTION DEV",
+    image: "/edutrack_preview.png"
+  },
+  {
+    id: 3,
+    title: "3. SatisFacts",
+    description: "A web-based system designed to automate the ARTA Customer Satisfaction Survey (CSS) for the City Government of Valenzuela.",
+    tag: "ACCORDION LAYOUT",
+    image: "/satisfacts_preview.png"
+  }
+];
+
 function App() {
   // Active layer state. Defaults to 3 (About layer on top)
   const [activeLayer, setActiveLayer] = useState(3);
   // Simple internal page state for "View More" navigation
   const [page, setPage] = useState('home');
+  const [hoveredProjectId, setHoveredProjectId] = useState(null);
 
   // Helper to determine greeting based on system hour
   const getGreeting = () => {
@@ -31,7 +56,7 @@ function App() {
       class: 'card-layer card-resume',
       tabStyle: { left: '40px', width: '200px' },
       content: (
-        <div className="card-body">
+        <>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '30px' }}>
             <h2 style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '36px', fontWeight: '800', textAlign: 'left', margin: 0 }}>
               EXPERIENCE & SKILLS
@@ -90,7 +115,7 @@ function App() {
               <span style={{ border: '1px solid #000000', padding: '6px 12px', borderRadius: '0px' }}>Creative Interaction Motion</span>
             </div>
           </div>
-        </div>
+        </>
       )
     },
     {
@@ -99,7 +124,7 @@ function App() {
       class: 'card-layer card-projects',
       tabStyle: { left: '280px', width: '200px' },
       content: (
-        <div className="card-body">
+        <>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '30px' }}>
             <h2 style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '36px', fontWeight: '800', textAlign: 'left', margin: 0 }}>
               FEATURED BUILDS
@@ -128,31 +153,46 @@ function App() {
           </div>
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
-            <div className="project-item">
-              <div>
-                <div className="project-title">1. React Bits Interactive Components</div>
-                <div style={{ fontSize: '14px', opacity: 0.8, marginTop: '4px' }}>Dynamic UI toolkit designed for modern web apps.</div>
-              </div>
-              <span className="project-tag">NPM PACKAGE</span>
-            </div>
+            {projects.map((project) => (
+              <div
+                key={project.id}
+                className="project-item"
+                style={{ position: 'relative' }}
+              >
+                <div>
+                  <div
+                    className="project-title"
+                    style={{ cursor: 'pointer', display: 'inline-block' }}
+                    onMouseEnter={() => setHoveredProjectId(project.id)}
+                    onMouseLeave={() => setHoveredProjectId(null)}
+                  >
+                    {project.title}
+                  </div>
+                  <div style={{ fontSize: '14px', opacity: 0.8, marginTop: '4px' }}>{project.description}</div>
+                </div>
+                <span className="project-tag">{project.tag}</span>
 
-            <div className="project-item">
-              <div>
-                <div className="project-title">2. Magnet Physics Animation Library</div>
-                <div style={{ fontSize: '14px', opacity: 0.8, marginTop: '4px' }}>Cursor tracking spring formulas for highly alive components.</div>
+                {hoveredProjectId === project.id && (
+                  <div className="comic-tooltip">
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      style={{ width: '260px', height: '170px', objectFit: 'cover', border: '2px solid #000', borderRadius: '4px' }}
+                    />
+                    <div style={{ flex: 1 }}>
+                      <div style={{ fontWeight: '800', fontSize: '20px', color: '#000', fontFamily: 'Montserrat, sans-serif', textTransform: 'uppercase', marginBottom: '8px', letterSpacing: '0.5px' }}>
+                        {project.title.substring(3)}
+                      </div>
+                      <div style={{ fontSize: '15px', color: '#333', lineHeight: '1.5', fontFamily: 'Montserrat, sans-serif', fontWeight: '500' }}>
+                        {project.description}
+                      </div>
+                    </div>
+                  </div>
+                )}
               </div>
-              <span className="project-tag">MOTION DEV</span>
-            </div>
-
-            <div className="project-item">
-              <div>
-                <div className="project-title">3. Minimalist Accordion Filing System</div>
-                <div style={{ fontSize: '14px', opacity: 0.8, marginTop: '4px' }}>Highly aesthetic layered drawer panels in vanilla CSS.</div>
-              </div>
-              <span className="project-tag">ACCORDION LAYOUT</span>
-            </div>
+            ))}
           </div>
-        </div>
+        </>
       )
     },
     {
@@ -161,7 +201,7 @@ function App() {
       class: 'card-layer card-contact',
       tabStyle: { left: '520px', width: '200px' },
       content: (
-        <div className="card-body">
+        <>
           <h2 style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '36px', fontWeight: '800', textAlign: 'left', margin: '0 0 30px' }}>
             SAY HELLO
           </h2>
@@ -180,7 +220,7 @@ function App() {
               <span>→</span>
             </a>
           </div>
-        </div>
+        </>
       )
     },
     {
@@ -189,7 +229,7 @@ function App() {
       class: 'card-layer card-intro',
       tabStyle: { left: '760px', width: '200px' },
       content: (
-        <div className="card-body">
+        <>
           <div className="editorial-subtitle" style={{ color: '#000000', marginTop: '20px' }}>
             {getGreeting()}
           </div>
@@ -225,7 +265,7 @@ function App() {
               GET TO KNOW ME MORE
             </button>
           </div>
-        </div>
+        </>
       )
     }
   ];
@@ -233,13 +273,13 @@ function App() {
   // Render internal pages for "View More"
   if (page !== 'home') {
     return (
-      <div className="portfolio-container" style={{ padding: '40px', minHeight: '100vh', background: '#fff', position: 'relative' }}>
+      <div className={`portfolio-container${page === 'intro' ? ' intro-page-body' : ''}`} style={{ display: 'block', padding: '40px', height: '100vh', overflowY: 'auto', background: '#fff', position: 'relative' }}>
         {/* Background particles for internal pages */}
         <Particles side="left" />
         <Particles side="right" />
 
         <button onClick={() => setPage('home')} style={{ position: 'absolute', top: '20px', left: '20px', zIndex: 3, cursor: 'pointer', background: 'transparent', border: 'none', fontSize: '14px' }}>← Back</button>
-        <div style={{ maxWidth: '1000px', margin: '0 auto' }}>
+        <div style={{ maxWidth: '1000px', margin: '0 auto', width: '100%' }}>
           {page === 'resume' && <ResumePage />}
           {page === 'projects' && <ProjectsPage />}
           {page === 'intro' && <IntroPage greeting={getGreeting()} />}
@@ -290,7 +330,17 @@ function App() {
                 </div>
 
                 {/* Card Contents */}
-                {layer.content}
+                <div
+                  className={`card-body ${activeLayer === index ? 'active-card' : ''}`}
+                  style={{
+                    overflowY: (index === 0 || index === 1) ? 'scroll' : 'hidden',
+                    pointerEvents: (activeLayer === index || (index === 3 && activeLayer === -1)) ? 'auto' : 'none',
+                    paddingBottom: (index === 0 || index === 1) ? '160px' : '40px',
+                    paddingTop: '55px'
+                  }}
+                >
+                  {layer.content}
+                </div>
               </div>
             );
           })}
