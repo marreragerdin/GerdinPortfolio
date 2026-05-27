@@ -1,25 +1,26 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: Helvetica, Arial, sans-serif;
+  --font-heading: Helvetica, Arial, sans-serif;
+  --font-mono: ui-monospace, Consolas, monospace;
+  --color-text-main: #08060d;
+  --color-text-h: #08060d;
+  --color-bg: #ffffff;
+  --color-border: #e5e4e7;
+  --color-code-bg: #f4f3ec;
+  --color-accent: #aa3bff;
+  --color-accent-bg: rgba(170, 59, 255, 0.1);
+  --color-accent-border: rgba(170, 59, 255, 0.5);
+  --color-social-bg: rgba(244, 243, 236, 0.5);
+}
+
 :root {
-  --text: #08060d;
-  --text-h: #08060d;
-  --bg: #ffffff;
-  --border: #e5e4e7;
-  --code-bg: #f4f3ec;
-  --accent: #aa3bff;
-  --accent-bg: rgba(170, 59, 255, 0.1);
-  --accent-border: rgba(170, 59, 255, 0.5);
-  --social-bg: rgba(244, 243, 236, 0.5);
-  --shadow:
-    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
-
-  --sans: 'Montserrat', sans-serif;
-  --heading: 'Montserrat', sans-serif;
-  --mono: ui-monospace, Consolas, monospace;
-
-  font: 18px/145% var(--sans);
+  font: 18px/145% var(--font-sans);
   letter-spacing: 0.18px;
   color-scheme: light;
-  color: var(--text);
-  background: var(--bg);
+  color: var(--color-text-main);
+  background: var(--color-bg);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -43,8 +44,8 @@
     --social-bg: rgba(47, 48, 58, 0.5);
     --shadow:
       rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
-    --sans: 'Montserrat', sans-serif;
-    --heading: 'Montserrat', sans-serif;
+    --sans: Helvetica, Arial, sans-serif;
+    --heading: Helvetica, Arial, sans-serif;
   }
 }
 
@@ -66,7 +67,7 @@ body {
 h1,
 h2 {
   font-family: var(--heading);
-  font-weight: 500;
+  font-weight: bold;
   color: var(--text-h);
 }
 
