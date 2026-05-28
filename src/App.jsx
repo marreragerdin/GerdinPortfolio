@@ -33,6 +33,7 @@ const projects = [
 function App() {
   // Active layer state. Defaults to 3 (About layer on top)
   const [activeLayer, setActiveLayer] = useState(3);
+  const [isCvOpen, setIsCvOpen] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
   const page = location.pathname.substring(1) || 'home';
@@ -75,32 +76,24 @@ function App() {
           <div className="grid grid-cols-1 gap-[20px] mt-[30px] text-left">
             <div className="bg-white border border-black p-[24px] rounded-none transition-transform duration-300 text-black">
               <div className="flex justify-between mb-[6px]">
-                <strong className="text-[18px] font-sans font-bold">Senior Full-Stack Engineer</strong>
-                <span className="text-[14px] opacity-70">2024 — Present</span>
+                <strong className="text-[18px] font-sans font-bold">Assistant and Maintenance — Let’s Print It</strong>
+                <span className="text-[14px] opacity-70">2020 — 2023</span>
               </div>
               <p className="text-[15px] leading-[1.6] opacity-85 m-0">
-                Architected and optimized interactive data visualizers and micro-animations, improving rendering frame rates by 40% using highly focused hardware-accelerated CSS layers.
+                Managed daily production, synchronized client communications, and optimized inventory workflows to ensure high-quality service and consistent project delivery.
+
               </p>
             </div>
 
             <div className="bg-white border border-black p-[24px] rounded-none transition-transform duration-300 text-black">
               <div className="flex justify-between mb-[6px]">
-                <strong className="text-[18px] font-sans font-bold">UI & Interaction Architect</strong>
-                <span className="text-[14px] opacity-70">2022 — 2024</span>
+                <strong className="text-[18px] font-sans font-bold">Assistant Quality Assurance — LikhaPay</strong>
+                <span className="text-[14px] opacity-70">2025</span>
               </div>
               <p className="text-[15px] leading-[1.6] opacity-85 m-0">
-                Designed premium component packages and responsive motion templates with custom magnet-based cursor interactions, resulting in over 10,000 developer installations.
-              </p>
-            </div>
-          </div>
+                Validated payment workflows through rigorous quality assurance testing, resolved user-facing incidents via systematic troubleshooting, and enforced operational standards to maintain system reliability and deliver a secure, seamless billing experience.
 
-          <div className="bg-white border border-black p-[24px] rounded-none transition-transform duration-300 text-black mt-[20px] text-left">
-            <h3 className="text-[18px] font-sans font-bold mt-0 mb-[12px]">CORE PROFICIENCIES</h3>
-            <div className="flex flex-wrap gap-[10px] text-[13px] font-mono">
-              <span className="border border-black px-[12px] py-[6px] rounded-none">React.JS</span>
-              <span className="border border-black px-[12px] py-[6px] rounded-none">Vite & Next.js</span>
-              <span className="border border-black px-[12px] py-[6px] rounded-none">Vanilla CSS Layouts</span>
-              <span className="border border-black px-[12px] py-[6px] rounded-none">Creative Interaction Motion</span>
+              </p>
             </div>
           </div>
         </>
@@ -220,15 +213,15 @@ function App() {
           <h1 className="editorial-title" style={{ textAlign: 'center', textTransform: 'uppercase', letterSpacing: '-2px', color: '#000', margin: '30px 0 10px', fontFamily: 'Montserrat, sans-serif', fontSize: '84px', fontWeight: 800, lineHeight: 0.9 }}>
             Gerdin Marrera
           </h1>
-          <div className="text-[20px] font-sans text-center font-[500] uppercase tracking-[4px] mt-[10px] mb-[45px] text-black">
+          <div className="text-[20px] font-sans text-center font-[500] uppercase tracking-[4px] mt-[10px] mb-[25px] text-black">
             Aspiring Network Engineer
           </div>
 
           <div style={{ fontSize: '16px', lineHeight: 1.7, opacity: 0.85, maxWidth: '500px', margin: '0px auto', textAlign: 'center', color: 'rgb(0, 0, 0)' }}>
-            Specializing in crafting premium, high-fidelity responsive websites with rich micro-animations, harmonized color palettes, and state-of-the-art interactive user experiences.
+            Architected high-performance, responsive web interfaces by integrating interactive UI principles with a robust networking foundation to ensure seamless user experiences and reliable system performance.
           </div>
 
-          <div className="flex justify-center gap-[30px] mt-[60px] opacity-100 text-[13px] font-sans tracking-[2px] text-black">
+          <div className="flex justify-center gap-[30px] mt-[35px] opacity-100 text-[13px] font-sans tracking-[2px] text-black">
             <button
               onClick={() => navigate('/intro')}
               className="text-black border-none cursor-pointer font-sans text-[14px] tracking-[2px] font-[700] px-[22px] py-[12px] uppercase rounded-[6px] transition-all duration-300 hover:opacity-90 hover:-translate-y-[1px]"
@@ -241,17 +234,16 @@ function App() {
     }
   ];
 
-  // Render internal pages for "View More"
   if (page !== 'home') {
     return (
-      <div className={`block p-[40px] h-screen overflow-y-auto bg-white relative w-[1000px] mx-auto border-x border-black box-border ${page === 'intro' ? 'intro-page-body' : ''}`}>
+      <div className={`block p-[40px] h-screen overflow-y-auto bg-white relative w-[1000px] mx-auto border-x border-black box-border intro-page-body`}>
         {/* Background particles for internal pages */}
         <Particles side="left" />
         <Particles side="right" />
 
         <button onClick={() => navigate('/')} className="absolute top-[20px] left-[20px] z-3 cursor-pointer bg-transparent border-none text-[14px]">← Back</button>
         <div className="max-w-[1000px] mx-auto w-full">
-          {page === 'resume' && <ResumePage />}
+          {page === 'resume' && <ResumePage onViewCv={() => setIsCvOpen(true)} />}
           {page === 'projects' && <ProjectsPage />}
           {page === 'intro' && <IntroPage greeting={getGreeting()} />}
         </div>
@@ -265,7 +257,15 @@ function App() {
       <Particles side="left" />
       <Particles side="right" />
 
-      <div className="flex justify-center items-end min-h-screen w-[1000px] mx-auto pb-[4vh] bg-white border-x border-black box-border">
+      <div className="flex justify-center items-end min-h-screen w-[1000px] mx-auto pb-[4vh] bg-white border-x border-black box-border relative">
+        {/* View CV Link on Upper Right Area */}
+        <button
+          onClick={() => setIsCvOpen(true)}
+          className="absolute top-[30px] right-[40px] z-[99] font-sans text-[14px] font-[700] uppercase tracking-[1px] text-black bg-transparent border-none border-b-2 border-black pb-[2px] cursor-pointer transition-opacity duration-300 hover:opacity-60"
+        >
+          View CV ↗
+        </button>
+
         <div className="relative w-full h-[650px] bg-transparent overflow-visible box-border">
           {layers.map((layer, index) => {
             // Dynamic Top Calculation using CSS calc() to stretch natively with full 100vh height
@@ -311,8 +311,49 @@ function App() {
           })}
         </div>
       </div>
+
+      {/* CV Modal Popup */}
+      {isCvOpen && (
+        <div className="fixed inset-0 z-[9999] flex items-center justify-center p-[20px] bg-black/60 backdrop-blur-[4px]">
+          <div
+            className="relative bg-white border-4 border-black w-full max-w-[900px] rounded-[16px] overflow-hidden text-left flex flex-col h-[85vh] transition-transform duration-300"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Modal Header */}
+            <div className="flex justify-between items-center px-[30px] py-[20px] border-b-2 border-black bg-white">
+              <h3 className="text-[20px] font-sans font-black text-black uppercase tracking-[0.5px] m-0">
+                Gerdin Marrera — CV
+              </h3>
+              <div className="flex items-center gap-[12px]">
+                <a
+                  href="/Marrera CV 2026.pdf"
+                  download="Gerdin_Marrera_CV_2026.pdf"
+                  className="bg-black text-white font-sans font-extrabold text-[13px] uppercase tracking-[1px] border-2 border-black px-[18px] py-[8px] rounded-[8px] no-underline inline-block text-center hover:bg-white hover:text-black transition-colors"
+                >
+                  Download CV ↓
+                </a>
+                <button
+                  onClick={() => setIsCvOpen(false)}
+                  className="bg-white text-black border-2 border-black w-[38px] h-[38px] flex items-center justify-center rounded-full font-bold text-[18px] cursor-pointer hover:bg-black hover:text-white transition-colors"
+                >
+                  ✕
+                </button>
+              </div>
+            </div>
+
+            {/* Modal Body: PDF Viewer */}
+            <div className="flex-1 bg-gray-100 p-[10px]">
+              <iframe
+                src="/Marrera CV 2026.pdf"
+                className="w-full h-full border-none rounded-[8px]"
+                title="Gerdin Marrera CV"
+              />
+            </div>
+          </div>
+        </div>
+      )}
     </div>
-  )
+  );
 }
 
 export default App

@@ -31,7 +31,7 @@ export default function IntroPage({ greeting }) {
               HELLO<span className="text-black">!</span>
             </h1>
             <p className="text-[15px] leading-[1.8] text-black mt-[10px] mr-0 mb-[20px] ml-0 text-justify">
-              My Name is Gerdin Marrera. I am a Information Technology in Pamantasan ng Lungsod ng Valenzuela. I have been working as a freelance graphic designer for about 5 years. I love art and visual things. I usually work on projects like branding, logo design, social media design, poster design, and layouting. I am passionate about pushing the boundaries of design and exploring new skills.
+              I am Gerdin Marrera, an Information Technology student at Pamantasan ng Lungsod ng Valenzuela. I am passionate to enhance my technical pursuits as an aspiring network engineer, where I aim to blend aesthetic precision with robust, reliable system architecture to push the boundaries of my work and continuously explore new skills.
             </p>
 
             {/* Contact Buttons */}
@@ -62,10 +62,9 @@ export default function IntroPage({ greeting }) {
               <h3 className="text-[18px] font-bold text-black m-0">Hobbies</h3>
             </div>
             <ul className="list-none p-0 m-0">
-              <li className="text-[14px] text-[#333] mb-[8px]">• Photography and visual storytelling</li>
-              <li className="text-[14px] text-[#333] mb-[8px]">• Exploring new design trends and tools</li>
-              <li className="text-[14px] text-[#333] mb-[8px]">• Creating digital art and illustrations</li>
-              <li className="text-[14px] text-[#333]">• Collaborating with creative communities</li>
+              <li className="text-[14px] text-[#333] mb-[8px]">• Gaming</li>
+              <li className="text-[14px] text-[#333] mb-[8px]">• Cubing</li>
+              <li className="text-[14px] text-[#333] mb-[8px]">• Watching Movies</li>
             </ul>
           </div>
         </div>

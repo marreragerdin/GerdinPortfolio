@@ -1,10 +1,10 @@
 import { useState } from 'react';
 
 const mockProjects = {
-  website: [
+  "web & mobile": [
     {
       id: 101,
-      title: "EsCee Hub",
+      title: "EsCee Hub Admin",
       category: "Website",
       description: "A web-based management system built to organize the administration of students' duty assignments and hours verification. The platform uses advanced tools including Geofenced QR attendance tracking, an integrated duty chatbox for communication, and automated hours verification system by a Confidence-Based Score algorithm.",
       images: ["/escee_hub_preview.png", "/escee_hub_overview.png", "/escee_hub_requests.png", "/escee_hub_create.png", "/escee_hub_record.png", "/escee_hub_details.png", "/escee_hub_departments.png", "/escee_hub_accounts.png"],
@@ -13,107 +13,123 @@ const mockProjects = {
     },
     {
       id: 102,
-      title: "EduTrack Portal",
+      title: "EduTrack",
       category: "Website",
-      description: "An interactive analytics dashboard built to monitor, record, and evaluate student academic progress in real time.",
-      images: ["/edutrack_preview.png", "/satisfacts_preview.png", "/escee_hub_preview.png"],
-      demoUrl: "https://github.com/marreragerdin",
-      technologies: ["Next.js", "Tailwind", "Firebase"]
+      description: "A web application designed to simplify the monitoring, recording, and analysis of student academic performance. It allows faculty to manage grades, student records, and reports efficiently, while enabling students to track their academic progress through a centralized online platform.",
+      images: ["/edutrack_preview.png", "/edutrack_record.png", "/edutrack_score.png", "/edutrack_setup.png", "/edutrack_subject.png"],
+      technologies: ["HTML", "CSS", "JavaScript", "Bootstrap", "Django", "SQLite", "Scikit-learn"]
     },
     {
       id: 103,
-      title: "Valenzuela Portal",
+      title: "SatisFacts",
       category: "Website",
-      description: "Official municipal service finder and information directory built using reactive design schemas.",
-      images: ["/satisfacts_preview.png", "/escee_hub_preview.png", "/edutrack_preview.png"],
-      technologies: ["HTML5", "Sass", "JavaScript"]
-    }
-  ],
-  "mobile app": [
+      description: "Official municipal service finder and information directory built using reactive design schemas.A web-based system designed to automate the ARTA Customer Satisfaction Survey (CSS) for the City Government of Valenzuela. It allows feedback to be collected easily, ensures better data privacy, and generates accurate reports on the city government's public services.",
+      images: ["/satisfacts_preview.png", "/satisfacts_homepage.png", "/satisfacts_work.png", "/satisfacts_accounts.png", "/satisfacts_support.png", "/satisfacts_survey.png", "/satisfacts_receipt.png"],
+      technologies: ["HTML", "CSS", "JavaScript", "React", "MySQL", "Express.js", "Node.js"]
+    },
     {
       id: 201,
-      title: "Citizen App",
+      title: "EsCee Hub App",
       category: "Mobile App",
-      description: "A cross-platform React Native community tool for accessing local public services, announcements, and reporting systems.",
-      images: ["/escee_hub_preview.png", "/edutrack_preview.png", "/satisfacts_preview.png"],
-      demoUrl: "https://github.com/marreragerdin",
-      technologies: ["React Native", "Expo", "Redux"]
+      description: "A student-facing mobile application designed to manage and verify duty operations for the EsCee Hub ecosystem. It enables students to log attendance through geofenced QR verification and real-time selfie documentation, while facilitating communication via an integrated chatbox and providing a centralized portal for compliance scheduling and required project documentation.",
+      images: ["/escee_hub_app_login.jpg", "/escee_hub_app_home.jpg", "/escee_hub_app_duties.jpg", "/escee_hub_app_duty.jpg", "/escee_hub_app_progress.jpg", "/escee_hub_app_profile.jpg"],
+      demoUrl: "https://escee-hub-website.vercel.app/",
+      technologies: ["React Native", "Expo", "Supabase"]
     },
-    {
-      id: 202,
-      title: "Studio Go",
-      category: "Mobile App",
-      description: "A high-fidelity mobile companion for freelance graphic designers to track project progress, invoices, and client mockups.",
-      images: ["/edutrack_preview.png", "/satisfacts_preview.png", "/escee_hub_preview.png"],
-      technologies: ["Flutter", "Dart", "SQLite"]
-    },
-    {
-      id: 203,
-      title: "Valenzuela Transport",
-      category: "Mobile App",
-      description: "Real-time navigation and shuttle booking mobile tracker tailored for urban commuters.",
-      images: ["/satisfacts_preview.png", "/escee_hub_preview.png", "/edutrack_preview.png"],
-      technologies: ["Kotlin", "Google Maps", "Express"]
-    }
   ],
   multimedia: [
     {
       id: 301,
-      title: "SatisFacts Brand",
+      title: "Book Cover",
       category: "Multimedia",
-      description: "Creative visual brand kit and interactive media assets designed to modernize public feedback systems in Valenzuela.",
-      images: ["/satisfacts_preview.png", "/escee_hub_preview.png", "/edutrack_preview.png"],
-      technologies: ["Photoshop", "Illustrator", "Figma"]
+      description: "A striking minimalist book cover featuring a bold, high-contrast aesthetic. The design utilizes a stark black, white, and vibrant yellow color palette to depict a suspenseful noir scene, where a silhouetted figure stands in a doorway, casting a long, ominous shadow over a crime scene marked by a textured red stain.",
+      images: ["/book cover.jpg"],
+      technologies: ["Photoshop"]
     },
     {
       id: 302,
-      title: "Motion Showreel",
+      title: "Minimalist Product Poster",
       category: "Multimedia",
-      description: "A premium suite of custom keyframe micro-animations, logo transitions, and interactive design prototypes.",
-      images: ["/satisfacts_preview.png", "/edutrack_preview.png", "/escee_hub_preview.png"],
-      technologies: ["After Effects", "Premiere Pro", "Lottie"]
+      description: "An inviting promotional flyer for Serenora designed to encourage guests to Escape, Relax, Unwind. The visual layout highlights a tranquil resort scene featuring a swimming pool and beach.",
+      images: ["minimalist product.jpg"],
+      technologies: ["Photoshop"]
     },
     {
       id: 303,
-      title: "Valenzuela Identity",
+      title: "Grunge Poster",
       category: "Multimedia",
-      description: "Comprehensive corporate identity overhaul, incorporating high-contrast vector layout designs and prints.",
-      images: ["/escee_hub_preview.png", "/satisfacts_preview.png", "/edutrack_preview.png"],
-      technologies: ["InDesign", "Vector", "Print"]
+      description: "A visually striking grunge-style poster with a bold, distressed aesthetic, centered around the environmental message PLANT TREES!. The design features oversized, semi-transparent typography overlaid on a textured, dark background, framing a prominent image of a tree that visually anchors the composition amidst dramatic light streaks.",
+      images: ["grunge poster.jpg"],
+      technologies: ["Photoshop"]
+    },
+    {
+      id: 304,
+      title: "Shed",
+      category: "Multimedia",
+      description: "As the director of SHED, I crafted this digital thriller to explore the unsettling intersection of identity and the permanence of our data. My goal was to visualize the claustrophobia of a protagonist who believes they have successfully erased their past, only to realize that modern technology ensures their digital footprint remains a weapon. By blending a suspenseful narrative with a gritty, glitch-filled aesthetic, I aimed to force audiences to confront the terrifying reality that even when you pay to disappear, your past never truly stops hunting you, byte by byte.",
+      images: ["shed.png"],
+      demoUrl: "https://youtu.be/8VznnROyvIs?si=nlYkk8Z-cZbWtkyy",
+      technologies: ["Adobe After Effects", "Adobe Premiere", "Alight Motion"]
     }
   ],
   game: [
     {
       id: 401,
-      title: "Pixel Quest",
+      title: "SINGKO O TRES",
       category: "Game",
-      description: "A lightweight canvas-based WebGL game featuring rich custom graphics, scrolling backgrounds, and spring physics.",
-      images: ["/edutrack_preview.png", "/escee_hub_preview.png", "/satisfacts_preview.png"],
-      demoUrl: "https://github.com/marreragerdin",
-      technologies: ["Three.js", "WebGL", "Physics"]
+      description: "This is a 2D side-scrolling platformer game developed in Java, featuring a charming pixel-art aesthetic. The game includes classic platforming elements like health and energy bars, environmental obstacles such as hazardous pits, and a detailed background setting, showcasing a foundational approach to game engine development and sprite-based interaction.",
+      images: ["/singkootres.png"],
+      technologies: ["JAVA"]
     },
     {
       id: 402,
-      title: "Architect Sim",
+      title: "BARIKADA: NATIONS UNITE!",
       category: "Game",
-      description: "An educational interactive networking game where players map and configure node routing topologies under budget bounds.",
-      images: ["/escee_hub_preview.png", "/satisfacts_preview.png", "/edutrack_preview.png"],
-      technologies: ["Unity", "C#", "Networking"]
+      description: "Barikada Tower Defense is a strategic spinoff title based on the original Barikada card-battle game. While the main game focuses on tactical deckbuilding inspired by Filipino history and folklore, Barikada Tower Defense reimagines these elements into a fast-paced defense strategy experience.",
+      images: ["/barikada_menu.png", "/barikada_stage.png", "/barikada_game.png"],
+      demoUrl: "https://toneecru.itch.io/barikada-nations-unite",
+      technologies: ["Unity", "C#"]
     },
     {
       id: 403,
-      title: "Space Terminal",
+      title: "Accord",
       category: "Game",
-      description: "An 8-bit retro aesthetic sci-fi strategy game emphasizing optimal routing through node-based logic trees.",
-      images: ["/satisfacts_preview.png", "/edutrack_preview.png", "/escee_hub_preview.png"],
-      technologies: ["Phaser.js", "Canvas", "Audio"]
+      description: "Accord is an immersive, choice-based interactive narrative that draws inspiration from the suspenseful themes of slasher cinema. The gameplay centers on high-stakes moral dilemmas, where every decision shapes the story's progression and impacts the fate of the characters involved. Featuring a distinct, stylized aesthetic that bridges cinematic visuals with retro-inspired interface design, Accord challenges players to navigate a web of secrets and conflict, forcing them to balance loyalty, truth, and the weight of their own actions.",
+      images: ["/accord_menu.png", "/accord_scene.png", "/accord_choice.png", "/accord_pause.png"],
+      technologies: ["Unity", "C#", "Da Vinci Resolve"]
+    }
+  ],
+  network: [
+    {
+      id: 501,
+      title: "Simple Networking Project",
+      category: "Network",
+      description: "This network project demonstrates the design and implementation of an enterprise-level topology connecting two distinct departments, ACCOUNTS and DELIVERY, via a centralized router. Using the 192.168.40.0 address space, the architecture employs sub-netting to segment departmental traffic, utilizing access-layer switches for local host connectivity and a router for inter-departmental communication. Key technical competencies showcased include VLAN-like separation through subnetting, static IP allocation for host devices, precise router interface configuration, and successful end-to-end verification of packet delivery across the simulated environment.",
+      images: ["/Simple Networking Project.png"],
+      technologies: ["Cisco Packet Tracer"]
+    },
+    {
+      id: 502,
+      title: "Simple Office Home Office Network - SOHO",
+      category: "Network",
+      description: "Designed a scalable network architecture for the XYZ company's new branch, utilizing a Router-on-a-Stick topology to support three distinct departments. This solution integrates VLAN-based traffic segmentation for Admin/IT, Finance/HR, and Customer Service, combined with automated IP addressing via a router-based DHCP server and seamless wireless connectivity. The project demonstrates technical proficiency in inter-VLAN routing, Cisco hardware configuration, and the establishment of a robust, self-contained network environment.",
+      images: ["Small Office Home Office Network -SOHO.png"],
+      technologies: ["Cisco Packet Tracer"]
+    },
+    {
+      id: 503,
+      title: "Hotel System Network",
+      category: "Network",
+      description: "Designed a hierarchical, multi-floor network infrastructure for the Vic Modern Hotel, integrating eight distinct departmental VLANs across three levels. This implementation features a robust core routing architecture utilizing OSPF for dynamic path advertisement and inter-floor connectivity via serial DCE links. Key technical highlights include a Router-on-a-Stick configuration for inter-VLAN routing, centralized router-based DHCP services for automated host addressing, and secure remote management via SSH. The design further incorporates comprehensive security measures, including port security with sticky MAC learning on the IT department switch and integrated wireless access for mobile and portable devices.",
+      images: ["Hotel System Network Design.png"],
+      technologies: ["Cisco Packet Tracer"]
     }
   ]
 };
 
 export default function ProjectsPage() {
-  const tabs = ["website", "mobile app", "multimedia", "game"];
-  const [activeTab, setActiveTab] = useState("website");
+  const tabs = ["web & mobile", "multimedia", "game", "network"];
+  const [activeTab, setActiveTab] = useState("web & mobile");
   const [selectedProject, setSelectedProject] = useState(null);
   const [activeImageIndex, setActiveImageIndex] = useState(0);
 
@@ -273,41 +289,47 @@ export default function ProjectsPage() {
                 />
 
                 {/* Left/Prev Arrow */}
-                <button
-                  onClick={handlePrevImage}
-                  className="absolute left-[15px] top-1/2 -translate-y-1/2 bg-white text-black border-2 border-black w-[38px] h-[38px] flex items-center justify-center rounded-full font-black text-[18px] cursor-pointer transition-all hover:scale-105 active:translate-x-[2px] z-10"
-                >
-                  ‹
-                </button>
+                {selectedProject.images.length > 1 && (
+                  <button
+                    onClick={handlePrevImage}
+                    className="absolute left-[15px] top-1/2 -translate-y-1/2 bg-white text-black border-2 border-black w-[38px] h-[38px] flex items-center justify-center rounded-full font-black text-[18px] cursor-pointer transition-all hover:scale-105 active:translate-x-[2px] z-10"
+                  >
+                    ‹
+                  </button>
+                )}
 
                 {/* Right/Next Arrow */}
-                <button
-                  onClick={handleNextImage}
-                  className="absolute right-[15px] top-1/2 -translate-y-1/2 bg-white text-black border-2 border-black w-[38px] h-[38px] flex items-center justify-center rounded-full font-black text-[18px] cursor-pointer transition-all hover:scale-105 active:translate-x-[-2px] z-10"
-                >
-                  ›
-                </button>
+                {selectedProject.images.length > 1 && (
+                  <button
+                    onClick={handleNextImage}
+                    className="absolute right-[15px] top-1/2 -translate-y-1/2 bg-white text-black border-2 border-black w-[38px] h-[38px] flex items-center justify-center rounded-full font-black text-[18px] cursor-pointer transition-all hover:scale-105 active:translate-x-[-2px] z-10"
+                  >
+                    ›
+                  </button>
+                )}
               </div>
 
               {/* Bottom Carousel Navigation Belt */}
-              <div className="absolute bottom-[15px] left-[40px] right-[40px] flex justify-between items-center z-10 select-none">
-                {/* Visual Position Pills */}
-                <div className="flex gap-[8px] bg-black/40 px-[10px] py-[6px] rounded-full">
-                  {selectedProject.images.map((_, idx) => (
-                    <button
-                      key={idx}
-                      onClick={() => setActiveImageIndex(idx)}
-                      className={`w-[8px] h-[8px] rounded-full transition-all border-none cursor-pointer ${idx === activeImageIndex ? 'bg-white scale-125' : 'bg-white/50'
-                        }`}
-                    />
-                  ))}
-                </div>
+              {selectedProject.images.length > 1 && (
+                <div className="absolute bottom-[15px] left-[40px] right-[40px] flex justify-between items-center z-10 select-none">
+                  {/* Visual Position Pills */}
+                  <div className="flex gap-[8px] bg-black/40 px-[10px] py-[6px] rounded-full">
+                    {selectedProject.images.map((_, idx) => (
+                      <button
+                        key={idx}
+                        onClick={() => setActiveImageIndex(idx)}
+                        className={`w-[8px] h-[8px] rounded-full transition-all border-none cursor-pointer ${idx === activeImageIndex ? 'bg-white scale-125' : 'bg-white/50'
+                          }`}
+                      />
+                    ))}
+                  </div>
 
-                {/* Position Index Number Label */}
-                <div className="text-[12px] font-sans font-bold text-black/60 tracking-[0.5px]">
-                  {activeImageIndex + 1} <span className="opacity-40">/</span> {selectedProject.images.length}
+                  {/* Position Index Number Label */}
+                  <div className="text-[12px] font-sans font-bold text-black/60 tracking-[0.5px]">
+                    {activeImageIndex + 1} <span className="opacity-40">/</span> {selectedProject.images.length}
+                  </div>
                 </div>
-              </div>
+              )}
             </div>
 
           </div>
